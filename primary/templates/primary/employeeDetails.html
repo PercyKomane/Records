@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+    <h3>Name: {{ details.first_name }}</h3>
+    <h3>Last Name: {{ details.last_name }}</h3>
+    <h3>Position: {{ details.job_position }}</h3>
+    <h3>Wage: R{{ details.wage }}</h3>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <a href="{{ request.META.HTTP_REFERER }}">Go back</a>
+        <a href="{% url 'delete' details.id %}">Delete</a>
+    </form>
+
+
+{% endblock %}

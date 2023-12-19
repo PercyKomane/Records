@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Records</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+        th {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+{% extends 'main.html' %}
+
+{% block content %}
+
+    <a href="{% url 'newEmployee' %}">Add employee</a>
+
+    <h3>List of Employees</h3>
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+            </tr>
+            {% for employee in details %}
+            <tr>
+                <th><a href="{% url 'employeeDetails' employee.id%}">{{ employee.first_name }} {{ employee.last_name }}</a></th>
+                <th>{{ employee.job_position }}</th>
+            </tr>
+            {% endfor %}
+        </table>
+ 
+{% endblock %}
+</body>
+</html>

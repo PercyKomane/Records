@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <a href="{{ request.META.HTTP_REFERER }}">Go back</a>
+    <button type="submit">Submit</button>
+
+    <!-- <label>Employee First Name: </label><br>
+    <input type="text" name="firstname" placeholder="Enter Fullname"/><br>
+     -->
+</form>
+
+{% endblock %}
