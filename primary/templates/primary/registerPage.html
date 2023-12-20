@@ -1,0 +1,17 @@
+<!-- primary/registerPage.html -->
+{% extends 'main.html' %}
+
+{% block content %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    
+    {{ user_form.as_p }}
+    {{ superuser_form.as_p }}
+
+    <input type="submit" value="Register">
+</form>
+
+<p>Have an account? <a href="{% url 'loginPage' %}">Login</a></p>
+
+{% endblock %}
