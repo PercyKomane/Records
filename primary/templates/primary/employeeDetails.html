@@ -1,6 +1,10 @@
 {% extends 'main.html' %}
 
 {% block content %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <a href="{% url 'updateEmployee' details.id %}">Edit</a>
+    </form>
 
     <h3>Name: {{ details.first_name }}</h3>
     <h3>Last Name: {{ details.last_name }}</h3>

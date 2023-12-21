@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
 
 def loginPage(request):
     details = SuperUser.objects.all()
@@ -73,6 +74,7 @@ def home(request):
     context = {'details': details}
     return render(request, 'primary/home.html', context)
 
+@login_required(login_url='loginPage')
 def newEmployee(request):
 
     if request.method == 'POST':
@@ -89,6 +91,25 @@ def newEmployee(request):
     
     context = {'form': form}
     return render(request, 'primary/newEmployee.html', context)
+
+@login_required(login_url='loginPage')
+def updateEmployee(request, pk):
+    # Retrieve the employee details from the database
+    employee = get_object_or_404(Employees, id=pk)
+
+    if request.method == 'POST':
+        # Populate the form with the current data from the database
+        form = EmployeesForm(request.POST, instance=employee)
+        
+        if form.is_valid():
+            form.save()
+            return redirect('employeeDetails', pk=pk)
+    else:
+        # Populate the form with the current data from the database
+        form = EmployeesForm(instance=employee)
+
+    context = {'form': form, 'employee': employee}
+    return render(request, 'primary/updateEmployee.html', context)
 
 @login_required(login_url='loginPage')
 def employeeDetails(request, pk):
