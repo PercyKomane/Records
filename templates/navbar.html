@@ -6,29 +6,34 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
-        <div>
-            <a href="/"><h1>LOGO</h1></a>
-        </div>
-        
-        <div>
-            <a href="{% url 'searchEmployee' %}">Search</a>
-        </div>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="/">Logo</a>
+            </div>
+        </nav>
     </div>
     
-    {% if request.user.is_authenticated %}
-    
-    <p>Hello {{ request.user }}</p>
-    
-    <a href="{% url 'logout' %}">Logout</a>
-    
-    {% else %}
-    
-    <a href="{% url 'loginPage' %}" id="login">Login</a> 
-    <a href="{% url 'registerPage' %}">Register</a>
-    
-    {% endif %}
-    <hr>
+    <div class="container-fluid">
+        <div class="container-fluid">
+            <div>
+                <a href="{% url 'searchEmployee' %}">Search</a>
+            </div>
+            {% if request.user.is_authenticated %}
+        
+            <p>Hello {{ request.user }}</p>
+            
+            <a href="{% url 'logout' %}">Logout</a>
+            
+            {% else %}
+            
+            <a href="{% url 'loginPage' %}" id="login">Login</a> 
+            <a href="{% url 'registerPage' %}">Register</a>
+        
+            {% endif %}
+            <hr>
+        </div>
+    </div>
     
     
 </body>

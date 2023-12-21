@@ -6,10 +6,10 @@
         <a href="{% url 'updateEmployee' details.id %}">Edit</a>
     </form>
 
-    <h3>Name: {{ details.first_name }}</h3>
-    <h3>Last Name: {{ details.last_name }}</h3>
-    <h3>Position: {{ details.job_position }}</h3>
-    <h3>Wage: R{{ details.wage }}</h3>
+    <h4>Name: {{ details.first_name }}</h4>
+    <h4>Last Name: {{ details.last_name }}</h4>
+    <h4>Position: {{ details.job_position }}</h4>
+    <h4>Wage: R{{ details.wage }}</h4>
 
     <form action="" method="POST">
         {% csrf_token %}
