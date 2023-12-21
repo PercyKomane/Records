@@ -9,8 +9,9 @@
     {% csrf_token %}
     {{ form.as_p }}
 
+    <a href="{{ request.META.HTTP_REFERER }}">Go back</a>
     <button type="submit">Update</button>
 
   </form>
-  
+
 {% endblock %}

@@ -1,16 +1,35 @@
-<a href="/"><h1>LOGO</h1></a>
-
-{% if request.user.is_authenticated %}
-
-<p>Hello {{ request.user }}</p>
-
-<a href="{% url 'logout' %}">Logout</a>
-
-{% else %}
-
-<a href="{% url 'loginPage' %}" id="login">Login</a> 
-<a href="{% url 'registerPage' %}">Register</a>
-
-{% endif %}
-<hr>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <a href="/"><h1>LOGO</h1></a>
+        </div>
+        
+        <div>
+            <a href="{% url 'searchEmployee' %}">Search</a>
+        </div>
+    </div>
+    
+    {% if request.user.is_authenticated %}
+    
+    <p>Hello {{ request.user }}</p>
+    
+    <a href="{% url 'logout' %}">Logout</a>
+    
+    {% else %}
+    
+    <a href="{% url 'loginPage' %}" id="login">Login</a> 
+    <a href="{% url 'registerPage' %}">Register</a>
+    
+    {% endif %}
+    <hr>
+    
+    
+</body>
+</html>

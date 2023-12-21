@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
+from django.db.models import Q
 
 def loginPage(request):
     details = SuperUser.objects.all()
@@ -129,3 +130,17 @@ def deleteRecord(request, pk):
     context = {'details': details}
     return render(request, 'primary/delete.html', context)
 
+@login_required(login_url='loginPage')
+def searchEmployee(request):
+    query = request.GET.get('q')
+
+    if query:
+        # Perform a case-insensitive search for employees
+        results = Employees.objects.filter(
+            Q(first_name__icontains=query) | Q(last_name__icontains=query)
+        )
+    else:
+        results = Employees.objects.none()
+
+    context = {'results': results, 'query': query}
+    return render(request, 'primary/searchEmployee.html', context)

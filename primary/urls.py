@@ -10,4 +10,5 @@ urlpatterns = [
     path('register/', views.registerPage, name='registerPage'),
     path('logout/', views.logoutUser, name="logout"),
     path('updateEmployee/<str:pk>/', views.updateEmployee, name='updateEmployee'),
+    path('employee/search', views.searchEmployee, name='searchEmployee')
 ]
