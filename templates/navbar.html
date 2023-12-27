@@ -31,6 +31,23 @@
             <a href="{% url 'registerPage' %}">Register</a>
         
             {% endif %}
+
+            <h4>Search Employees</h4>
+            <form method="get" action="{% url 'searchEmployee' %}">
+                <input type="text" name="q" placeholder="Search employees...">
+                <button type="submit">Search</button>
+            </form>
+
+            {% if results %}
+                <h5>Search Results</h5>
+                <ul>
+                {% for employee in results %}
+                    <li><a href="{% url 'employeeDetails' pk=employee.id %}">{{ employee.first_name }} {{ employee.last_name }}</a></li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>No results found.</p>
+            {% endif %}
             <hr>
         </div>
     </div>

@@ -143,4 +143,4 @@ def searchEmployee(request):
         results = Employees.objects.none()
 
     context = {'results': results, 'query': query}
-    return render(request, 'primary/searchEmployee.html', context)
+    return render(request, 'primary/home.html', context)
